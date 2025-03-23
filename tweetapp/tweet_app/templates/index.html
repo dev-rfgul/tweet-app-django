@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    test template
-</body>
-</html>
+{% extends 'layout.html'%}
+
+
+{%block title %}index page{%endblock%}
+
+{%block content%}
+<h1 class="text-center text-3xl mx-auto">hello world this is the index page of the app templates </h1>
+{%endblock%}
