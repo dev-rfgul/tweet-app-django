@@ -33,4 +33,43 @@
             path('name of the app/', include('name of the app .urls')),
             // we can use something else as well in the url , it will be the route eg. localhost:3000/nameoftheapp/tweet and etc , 
             // but the include should have the exact name of the app
-
+6:we have to make a static folder in the main django project to server the static files, imgs etc as well as we have to make a template folder in main django projec to place the base.html file for implementing DRY concept 
+7:now we can run this cmd to test our app wether is running ok or not.
+    python manage.py runserver 8000
+8: if its running fine then we can make models in our django project like this,
+    open app folder > models.py > and add this import statement
+        from django.contrib.auth.models import User
+    then we can make models like this 
+        class Tweet(models.Model):
+         user=models.ForeignKey(User,on_delete=models.CASCADE)
+         text=models.TextField(max_length=240)
+         photo=models.ImageField(upload_to='photos/', blank=True,null=True)
+         created_at=models.DateTimeField(auto_now_add=True)
+         updated_at=models.DateTimeField(auto_now=True)
+         def __str__(self):
+             return f'{self.user.username}-{self.text[:20]}'
+        
+    after this we have to register this model into the admin of our app folder 
+        from .models import Tweet
+        admin.site.register(Tweet)
+    after this run these cmds to migrate db changes
+        python manage.py makemigrations
+        python manage.py migrate
+    now access the admin route  , and it should show your created model 
+9: Moving towards Forms now 
+    make forms.py in app folder and paste this code into that file 
+        from django import forms    
+        from .models import model_name
+        #models can be created like that
+        class TweetForm(forms.ModelForm):
+            class Meta:
+                model:Tweet
+                fields:['text','photo'] // these text and photo should always be matching with your names in model
+10:Moving towards views now 
+    import statements
+        from .models import model_name
+        from .forms import  form_name
+        from django.shortcuts import get_object_or_404
+        #views can be created as you want ,
+        def home(request):
+        return render(request, 'index.html')
