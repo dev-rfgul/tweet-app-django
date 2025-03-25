@@ -1,0 +1,14 @@
+{%extends 'layout.html'}
+
+{%block content%}
+<h1>login</h1>
+
+<form action="post">
+  {%csrf_token%} 
+  {{form.as_p}}
+  <button>login</button>
+</form>
+
+<a href="{%url 'register'%}">dont have an account</a>
+
+{%endblock%}
