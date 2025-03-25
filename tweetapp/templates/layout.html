@@ -61,8 +61,21 @@
         >
       </div>
     </nav>
+
     <div class="container">{% block content %} {% endblock %}</div>
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 Chirp. All rights reserved.</p>
+        <div class="mt-4 space-x-4">
+          <a href="#" class="hover:text-blue-300">Privacy Policy</a>
+          <a href="#" class="hover:text-blue-300">Terms of Service</a>
+          <a href="#" class="hover:text-blue-300">Contact</a>
+        </div>
+      </div>
+    </footer>
   </body>
+
+  
   <script>
     const toggleBtn = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
