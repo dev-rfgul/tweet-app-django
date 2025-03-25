@@ -3,5 +3,8 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.tweet_list, name='tweet_list'),
+    path('<int:tweet_id>/edit/', views.tweet_edit, name='tweet_edit'),
+    path('<int:tweet_id>/delete/', views.tweet_delete, name='tweet_delete'),
+    path('create/', views.tweet_create, name='tweet_create'),
 ]

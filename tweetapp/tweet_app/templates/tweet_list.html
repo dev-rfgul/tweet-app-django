@@ -1,0 +1,19 @@
+{% extends 'layout.html'%}
+
+
+{%block title %}index page{%endblock%}
+
+{%block content%}
+<h1 class="text-center text-3xl mx-auto">hello world this is the index page of the app templates </h1>
+
+<a href="{%url 'tweet_create' %}"> Create a tweet</a>
+<div>
+    {%for tweet in tweets%}
+    <img src="{{tweet.photo.url}}" alt="">
+    <h1>{{tweet.user.username}}</h1>
+    <p>{{tweet.text}}</p>
+    <a href="{% url 'tweet_edit' tweet.id%}">edit</a>
+    <a href="{%url 'tweet_delete' tweet.id%}">delete</a>
+    {%endfor%}
+</div>
+{%endblock%}

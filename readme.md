@@ -73,3 +73,5 @@
         #views can be created as you want ,
         def home(request):
         return render(request, 'index.html')
+11: now you can create files in your templates folder of your app.
+
