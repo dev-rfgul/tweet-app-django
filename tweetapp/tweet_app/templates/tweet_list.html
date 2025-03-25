@@ -18,11 +18,12 @@
                 <h1 class="text-lg font-semibold text-gray-800">{{ tweet.user.username }}</h1>
             </div>
             <p class="text-gray-700 mt-3">{{ tweet.text }}</p>
-            
+            {% if tweet.user == user %}
             <div class="flex justify-end space-x-3 mt-4">
                 <a href="{% url 'tweet_edit' tweet.id %}" class="px-3 py-1 bg-yellow-500 text-white rounded-md shadow hover:bg-yellow-600">Edit</a>
                 <a href="{% url 'tweet_delete' tweet.id %}" class="px-3 py-1 bg-red-500 text-white rounded-md shadow hover:bg-red-600">Delete</a>
             </div>
+            {%endif%}
         </div>
         {% empty %}
         <p class="text-center text-gray-500">No tweets available.</p>
