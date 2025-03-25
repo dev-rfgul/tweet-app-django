@@ -1,19 +1,32 @@
-{% extends 'layout.html'%}
+{% extends 'layout.html' %}
 
+{% block title %}Tweet Listing{% endblock %}
 
-{%block title %}index page{%endblock%}
+{% block content %}
+<div class="max-w-2xl mx-auto p-6">
+    <h1 class="text-center text-4xl font-bold text-gray-900 mb-6">Welcome to the Tweet Page</h1>
+    
+    <div class="flex justify-end mb-4">
+        <a href="{% url 'tweet_create' %}" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600">Create a Tweet</a>
+    </div>
 
-{%block content%}
-<h1 class="text-center text-3xl mx-auto">hello world this is the index page of the app templates </h1>
-
-<a href="{%url 'tweet_create' %}"> Create a tweet</a>
-<div>
-    {%for tweet in tweets%}
-    <img src="{{tweet.photo.url}}" alt="">
-    <h1>{{tweet.user.username}}</h1>
-    <p>{{tweet.text}}</p>
-    <a href="{% url 'tweet_edit' tweet.id%}">edit</a>
-    <a href="{%url 'tweet_delete' tweet.id%}">delete</a>
-    {%endfor%}
+    <div class="space-y-6">
+        {% for tweet in tweets %}
+        <div class="bg-white shadow-md rounded-lg p-5 border border-gray-200">
+            <div class="flex items-center space-x-4">
+                <img src="{{ tweet.photo.url }}" alt="Profile" class="w-12 h-12 rounded-full object-cover border border-gray-300">
+                <h1 class="text-lg font-semibold text-gray-800">{{ tweet.user.username }}</h1>
+            </div>
+            <p class="text-gray-700 mt-3">{{ tweet.text }}</p>
+            
+            <div class="flex justify-end space-x-3 mt-4">
+                <a href="{% url 'tweet_edit' tweet.id %}" class="px-3 py-1 bg-yellow-500 text-white rounded-md shadow hover:bg-yellow-600">Edit</a>
+                <a href="{% url 'tweet_delete' tweet.id %}" class="px-3 py-1 bg-red-500 text-white rounded-md shadow hover:bg-red-600">Delete</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-gray-500">No tweets available.</p>
+        {% endfor %}
+    </div>
 </div>
-{%endblock%}
+{% endblock %}

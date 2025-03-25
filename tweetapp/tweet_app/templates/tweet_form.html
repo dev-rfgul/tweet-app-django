@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-gray-900 text-white rounded-lg shadow-lg">
+    <h1 class="text-center text-3xl font-semibold">Hello World! This is the index page of the app.</h1>
+
+    <h2 class="mt-6 text-2xl font-semibold">
+        {% if form.instance.pk %} Edit Tweet {% else %} Create Tweet {% endif %}
+    </h2>
+
+    <form method="post" enctype="multipart/form-data" class="mt-4 space-y-4">
+        {% csrf_token %}
+        <div class="space-y-2">
+            {{ form.as_p|safe }}
+        </div>
+        
+        <button type="submit" class="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 transition">
+            Submit
+        </button>
+    </form>
+    <a href="{%url 'tweet_list'%}"> back</a>
+</div>
+{% endblock %}
