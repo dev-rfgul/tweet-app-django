@@ -3,7 +3,7 @@
 {%block content%}
 <h1>login</h1>
 
-<form action="post">
+<form method="POST" action="{%url 'login' %}">
   {%csrf_token%} 
   {{form.as_p}}
   <button>login</button>

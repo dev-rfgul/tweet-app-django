@@ -36,11 +36,24 @@
           </div>
 
           <!-- Menu items -->
+          <!-- Menu items -->
           <div id="menu" class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+            <a
+              href="{% url 'tweet_list' %}"
+              class="text-gray-700 hover:text-blue-600"
+              >Home</a
+            >
+            {% if user.is_authenticated %}
+            <form method="post" action="{%url 'logout'%}">
+              {% csrf_token %}
+              <button type="submit" class="text-gray-700 hover:text-blue-600">
+                Logout
+              </button>
+            </form>
+            {%else%}
+            <a href="{% url 'login' %}" class="text-gray-700 hover:text-blue-600">Login</a
+            {% endif %}
             <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
-            <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
-            <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
           </div>
         </div>
       </div>
@@ -75,7 +88,6 @@
     </footer>
   </body>
 
-  
   <script>
     const toggleBtn = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
