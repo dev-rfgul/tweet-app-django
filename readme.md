@@ -16,13 +16,26 @@ A Twitter-like application built with Django that allows users to create, view a
 ## Setup and Installation
 
 1. Initialize your Django project
+
+
+Run the Followind command in your  `terminal`:
+
+```bash
+$ mkdir djangotutorial
+```
+After creating a folder named `djangotutorial` run this command in terminal to create a project.
+```bash
+$ django-admin startproject mysite djangotutorial
+```
 2. Follow the configuration steps below to set up your project properly
 
 ## Configuration
 
 ### Media Files Configuration
 
+
 Add the following to your `settings.py`:
+we are doing this to include media files , eg imgs, videos etc in our web pages.
 
 ```python
 import os
@@ -33,6 +46,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ```
 
 ### Static Files Configuration
+we are doing this to include static files like , html , css and jquery to our web pages.
 
 Add the following to your `settings.py`:
 
@@ -45,6 +59,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 ### Update URLs Configuration
 
 Modify your main `urls.py` to serve media files:
+urls.py file handles the routing in our django application
 
 ```python
 from django.contrib import admin
