@@ -229,7 +229,7 @@ Visit http://localhost:8000/ to view your app.
 
 ## License
 
-[Your License]
+[Your License]r
 
 ## Acknowledgements
 
